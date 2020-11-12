@@ -1,0 +1,25 @@
+{{title}}
+
+
+<form [formGroup]="loginForm">
+  <div>
+    <label>Email *</label>
+    <input
+      formControlName="email"
+      type="email"
+      placeholder="email@email.fr">
+  </div>
+  <div>
+    <label>Password *</label>
+    <input
+      formControlName="password"
+      type="password"
+      placeholder="Password">
+  </div>
+
+  <button
+    [disabled]="loginForm.invalid"
+  >
+    Login
+  </button>
+</form>

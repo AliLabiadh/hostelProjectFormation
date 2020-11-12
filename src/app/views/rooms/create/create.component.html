@@ -1,0 +1,16 @@
+{{title}}
+
+<form #formElement="ngForm">
+  <div>
+    <label>Name *</label>
+    <input
+           required
+           placeholder="Room name">
+  </div>
+
+  <button
+    [disabled]="formElement.invalid"
+  >
+    Create
+  </button>
+</form>

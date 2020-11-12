@@ -9,6 +9,7 @@ import { LoginComponent } from './views/login/login.component';
 import { RegisterComponent } from './views/register/register.component';
 import { ListComponent } from './views/rooms/list/list.component';
 import { CreateComponent } from './views/rooms/create/create.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 @NgModule({
@@ -24,7 +25,8 @@ import { CreateComponent } from './views/rooms/create/create.component';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import { FormGroup } from '@angular/forms';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -8,18 +9,26 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
+  submitLabel = 'Login';
   title = 'Login';
-  loginForm: FormGroup;
 
-  constructor(private readonly fb: FormBuilder) { }
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    const {required, minLength, email} = Validators;
+  }
 
-    // @ts-ignore
-    this.loginForm = this.fb.group({
-      email: ['', [email, required]],
-      password: ['', [minLength(8), required]]
-    });
+  login(form: FormGroup): void {
+    const {email, password} = form.value;
+    const emailValue = email;
+    const passwordValue = password;
+    const apiUrl = 'http://localhost:3000/api/users/login?access_token=LXgdWEvAU3UrWI3GAG0GHVEgSN3x7N4dARCwZIEAccAuVKDHbkOlLaXt6U0eeB8k';
+    const credentials = {
+      email: emailValue,
+      password: passwordValue
+    };
+    this.http.post(
+      apiUrl,
+      credentials
+    ).subscribe();
   }
 }

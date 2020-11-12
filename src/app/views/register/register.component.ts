@@ -11,6 +11,9 @@ import { HttpClient } from '@angular/common/http';
 
 export class RegisterComponent implements OnInit {
 
+  hasFailed = false;
+  isCreated = false;
+  message = 'Votre inscription a bien été prise en compte';
   submitLabel = 'Register';
   title = 'Register';
 
@@ -32,8 +35,19 @@ export class RegisterComponent implements OnInit {
     this.http.post(
       apiUrl,
       credentials
-    ).subscribe();
-    console.log('DONE');
+    ).subscribe(
+      data => {
+        if (data){
+          this.isCreated = true;
+        }
+       },
+      error => {
+        if (error.error.error.message){
+          this.message =  'Erreur dans l\'inscription: ' + error.error.error.message;
+          this.hasFailed = true;
+        }
+      }
+    );
   }
 
 }

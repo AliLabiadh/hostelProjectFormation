@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import {HttpClient} from '@angular/common/http';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,10 +10,12 @@ import {HttpClient} from '@angular/common/http';
 })
 export class LoginComponent implements OnInit {
 
+  message: string;
+  hasFailed = false;
   submitLabel = 'Login';
   title = 'Login';
 
-  constructor(private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +32,19 @@ export class LoginComponent implements OnInit {
     this.http.post(
       apiUrl,
       credentials
-    ).subscribe();
+    ).subscribe(
+      data => {
+        if (data){
+          console.log(data);
+          this.router.navigate(['/']);
+        }
+      },
+      error => {
+        if (error.error.error.message){
+          this.message =  'Erreur dans l\'inscription: ' + error.error.error.message;
+          this.hasFailed = true;
+        }
+      }
+    );
   }
 }

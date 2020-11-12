@@ -1,5 +1,11 @@
+<div *ngIf="isCreated">
+  <p>{{message}}</p>
+</div>
+<div *ngIf="hasFailed">
+  <p>{{message}}</p>
+</div>
 <app-user-credentials-component
   [submitLabel]="submitLabel"
   [title]="title"
-  (submitForm)="register($event)">
+  (submitForm)="register($event)" *ngIf="!isCreated">
 </app-user-credentials-component>

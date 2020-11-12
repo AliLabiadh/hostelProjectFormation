@@ -1,3 +1,6 @@
+<div *ngIf="hasFailed">
+  <p>{{message}}</p>
+</div>
 <app-user-credentials-component
   [submitLabel]="submitLabel"
   [title]="title"

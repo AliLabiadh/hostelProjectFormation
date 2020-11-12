@@ -10,6 +10,7 @@ import { RegisterComponent } from './views/register/register.component';
 import { ListComponent } from './views/rooms/list/list.component';
 import { CreateComponent } from './views/rooms/create/create.component';
 import {HttpClientModule} from '@angular/common/http';
+import { LogoutComponent } from './views/logout/logout.component';
 
 
 @NgModule({
@@ -20,6 +21,7 @@ import {HttpClientModule} from '@angular/common/http';
     RegisterComponent,
     ListComponent,
     CreateComponent,
+    LogoutComponent,
   ],
   imports: [
     BrowserModule,

@@ -14,7 +14,5 @@ export class UserCredentialsComponentComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
 
-  }
 }

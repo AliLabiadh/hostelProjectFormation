@@ -1,15 +1,15 @@
 {{title}}
 
-<form #formElement="ngForm">
+<form [formGroup]="createForm">
   <div>
     <label>Name *</label>
     <input
-           required
-           placeholder="Room name">
+      formControlName="name"
+      placeholder="Room name">
   </div>
 
   <button
-    [disabled]="formElement.invalid"
+    [disabled]="createForm.invalid"
   >
     Create
   </button>

@@ -1,1 +1,19 @@
 <h1>{{title}}</h1>
+
+<table>
+  <tbody>
+  <tr>
+    <td>ID</td>
+    <td>NOM</td>
+  </tr>
+  <tr *ngFor="let room of roomsList" [ngStyle]="{'background-color': selectColor(room.id)}">
+    <td>
+      {{room.id}}
+    </td>
+    <td>
+      {{room.name}}
+    </td>
+    <button (click)="onDetail(room.id)">Detail</button>
+  </tr>
+  </tbody>
+</table>
